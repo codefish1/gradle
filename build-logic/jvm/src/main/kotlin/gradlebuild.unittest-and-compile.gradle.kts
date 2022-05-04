@@ -292,7 +292,7 @@ fun configureTests() {
             server.set(uri("https://ge-td-dogfooding.grdev.net"))
         }
 
-        if (project.testDistributionEnabled && !isUnitTest()) {
+//        if (project.testDistributionEnabled && !isUnitTest()) {
             println("Remote test distribution has been enabled for $testName")
 
             distribution {
@@ -302,7 +302,7 @@ fun configureTests() {
                     preferredMaxDuration.set(Duration.ofSeconds(this))
                 }
                 // No limit; use all available executors
-                distribution.maxRemoteExecutors.set(if (project.isPerformanceProject()) 0 else null)
+                distribution.maxRemoteExecutors.set(0)
 
                 if (BuildEnvironment.isCiServer) {
                     when {
@@ -314,7 +314,7 @@ fun configureTests() {
                     requirements.set(listOf("gbt-dogfooding"))
                 }
             }
-        }
+//        }
 
         if (project.supportsPredictiveTestSelection()) {
             // Temporary workaround for Gradle Enterprise issue which in 2022.2 and 2022.2.1
