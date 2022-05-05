@@ -68,6 +68,7 @@ fun configureCompile() {
         configureCompileTask(options)
     }
     tasks.withType<GroovyCompile>().configureEach {
+
         groovyOptions.encoding = "utf-8"
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
